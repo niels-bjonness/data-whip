@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Whip: From Conflict to Confidence</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0F172A; /* slate-900 */
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1E2B3B; /* slate-800 */
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #0891B2; /* cyan-600 */
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #06B6D4; /* cyan-500 */
+        }
+
+        /* The 90-Day Sprint Refinery */
+        .phase-btn {
+            transition: all 0.3s ease;
+            border-bottom-width: 4px;
+            border-color: transparent;
+        }
+        .phase-btn.active {
+            border-color: #06B6D4; /* cyan-500 */
+            background-color: #1E2B3B !important; /* slate-800 */
+            color: #ffffff !important;
+        }
+        .phase-btn:hover:not(.active) {
+            background-color: #334155; /* slate-700 */
+        }
+        
+        /* Barrier Accordion */
+        .barrier-btn[aria-expanded="true"] .barrier-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Flat diagrams */
+        .diagram-box {
+            background-color: #1E2B3B; /* slate-800 */
+            border: 1px solid #334155; /* slate-700 */
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        .diagram-icon {
+            width: 3.5rem;
+            height: 3.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0.5rem;
+            margin: 0 auto 0.5rem auto;
+        }
+        .diagram-arrow {
+            font-size: 2.5rem;
+            line-height: 1;
+            color: #475569; /* slate-600 */
+        }
+        .diagram-arrow-cyan {
+            font-size: 2.5rem;
+            line-height: 1;
+            color: #0891B2; /* cyan-600 */
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-300 antialiased">
+
+    <!-- Header / Navigation -->
+    <header class="sticky top-0 z-50 w-full bg-slate-900/80 backdrop-blur-lg border-b border-slate-700">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="#overview" class="flex items-center">
+                    <span class="text-2xl font-bold text-slate-100">Data<span class="text-cyan-400">Whip</span></span>
+                </a>
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="#problem" class="text-sm font-medium text-slate-300 hover:text-cyan-400">Problem</a>
+                    <a href="#solution" class="text-sm font-medium text-slate-300 hover:text-cyan-400">Solution</a>
+                    <a href="#process" class="text-sm font-medium text-slate-300 hover:text-cyan-400">Journey</a>
+                    <a href="#roi" class="text-sm font-medium text-slate-300 hover:text-cyan-400">ROI</a>
+                    <a href="#scale" class="text-sm font-medium text-slate-300 hover:text-cyan-400">Ambition</a>
+                    <a href="#gtm" class="text-sm font-medium text-slate-300 hover:text-cyan-400">Strategy</a>
+                    <a href="#cta" class="bg-cyan-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-cyan-500 transition-colors duration-200">
+                        Get Audit
+                    </a>
+                </div>
+                <button id="mobile-menu-btn" class="md:hidden text-slate-300">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </nav>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-800 shadow-lg py-2">
+            <a href="#problem" class="block px-4 py-2 text-base font-medium text-slate-300 hover:bg-slate-700">Problem</a>
+            <a href="#solution" class="block px-4 py-2 text-base font-medium text-slate-300 hover:bg-slate-700">Solution</a>
+            <a href="#process" class="block px-4 py-2 text-base font-medium text-slate-300 hover:bg-slate-700">Journey</a>
+            <a href="#roi" class="block px-4 py-2 text-base font-medium text-slate-300 hover:bg-slate-700">ROI</a>
+            <a href="#scale" class="block px-4 py-2 text-base font-medium text-slate-300 hover:bg-slate-700">Ambition</a>
+            <a href="#gtm" class="block px-4 py-2 text-base font-medium text-slate-300 hover:bg-slate-700">Strategy</a>
+            <a href="#cta" class="block px-4 py-3 text-base font-medium text-white bg-cyan-600 text-center rounded-md m-2">Get Audit</a>
+        </div>
+    </header>
+
+    
+    <main>
+
+        <!-- Section 1: Hero -->
+        <section id="overview" class="pt-24 pb-24 md:pt-40 md:pb-32">
+            <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h1 class="text-4xl font-extrabold text-white sm:text-5xl lg:text-7xl leading-tight">
+                    The <span class="text-cyan-400">$800K</span> Argument That Never Ends
+                </h1>
+            </div>
+            <div class="mt-12 max-w-2xl mx-auto p-6 bg-slate-800 rounded-lg shadow-2xl border border-slate-700">
+                <p class="font-mono text-lg text-slate-100">Monday, 9 AM Leadership Meeting (A $75M Company):</p>
+                <div class="mt-4 font-mono text-slate-300 space-y-2 text-lg">
+                    <p><span class="text-cyan-400 font-bold">CFO:</span> "We're at $8.2 million for the quarter."</p>
+                    <p><span class="text-cyan-400 font-bold">Head of Sales:</span> "My CRM shows $8.7 million."</p>
+                    <p><span class="text-cyan-400 font-bold">Operations Manager:</span> "I show $8.4 million in shipped orders."</p>
+                    <p class="mt-4 pt-4 border-t border-slate-600"><span class="text-red-400 font-bold">CEO:</span> "Which number goes in our investor update?"</p>
+                    <p class="text-slate-500 italic">Silence.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: The Problem -->
+        <section id="problem" class="py-20 bg-slate-800/50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto">
+                    <h2 class="text-3xl font-extrabold text-white sm:text-4xl">What They Don't Have: A Single Source of Truth</h2>
+                    <p class="mt-4 text-lg text-slate-300 leading-relaxed">
+                        Every system defines "revenue" differently. Salesforce (deal closed), QuickBooks (invoice generated), Ops (product shipped), Finance (payment cleared). None are wrong, but they don't agree.
+                    </p>
+                </div>
+
+                <!-- Problem Diagram -->
+                <div class="mt-16 max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                    <div class="bg-slate-700 p-6 rounded-lg">
+                        <p class="text-sm font-semibold text-slate-300">Salesforce (CRM)</p>
+                        <p class="text-3xl font-bold text-white mt-2">$8.7M</p>
+                    </div>
+                    <div class="bg-slate-700 p-6 rounded-lg">
+                        <p class="text-sm font-semibold text-slate-300">QuickBooks (ERP)</p>
+                        <p class="text-3xl font-bold text-white mt-2">$8.4M</p>
+                    </div>
+                    <div class="bg-slate-700 p-6 rounded-lg">
+                        <p class="text-sm font-semibold text-slate-300">Finance (Ledger)</p>
+                        <p class="text-3xl font-bold text-white mt-2">$8.2M</p>
+                    </div>
+                    <div class="bg-red-900/50 p-6 rounded-lg border-2 border-red-500">
+                        <p class="text-sm font-semibold text-red-300">Investor Update</p>
+                        <p class="text-3xl font-bold text-white mt-2">?</p>
+                    </div>
+                </div>
+
+                <div class="mt-12 max-w-3xl mx-auto text-center">
+                    <p class="text-xl text-slate-300 leading-relaxed">
+                        Your data analyst spends 40% of their time in reconciliation meetings. By the time they build a "single version," it's stale.
+                    </p>
+                    <p class="mt-4 text-2xl font-bold text-white">Result: Five dashboards. None agree. Nobody trusts any of them.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: The Cost -->
+        <section id="cost" class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-12 items-center">
+                <!-- The Story -->
+                <div class="bg-slate-800 p-8 rounded-lg border border-slate-700">
+                    <h3 class="text-2xl font-bold text-white">The Hidden Cost of a Simple Question</h3>
+                    <p class="mt-4 text-lg text-slate-300 font-medium">VP of Product asks: <span class="italic">"Show me revenue by customer segment for 18 months."</span></p>
+                    <ul class="mt-4 space-y-3 text-slate-400 list-disc list-inside">
+                        <li><span class="font-semibold text-slate-300">Week 1:</span> Analyst pulls data from Salesforce, QuickBooks, Shopify.</li>
+                        <li><span class="font-semibold text-slate-300">Week 2:</span> CFO challenges the numbers.</li>
+                        <li><span class="font-semibold text-slate-300">Week 3:</span> Re-pull, reconcile in Excel.</li>
+                        <li><span class="font-semibold text-slate-300">Week 4:</span> Present findings (now 5 weeks old).</li>
+                    </ul>
+                    <p class="mt-4 text-lg text-red-400 font-medium">VP's Response: <span class="italic">"Never mind, we already decided."</span></p>
+                </div>
+                <!-- The Number -->
+                <div class="text-center">
+                    <p class="text-lg font-semibold text-cyan-400 uppercase tracking-widest">Annual Hidden Cost</p>
+                    <p class="text-8xl font-extrabold text-white my-2">$847K</p>
+                    <p class="text-xl text-slate-300">in decision latency, duplicate effort, and wrong decisions.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: The Solution -->
+        <section id="solution" class="py-20 bg-slate-800/50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto">
+                    <h2 class="text-3xl font-extrabold text-white sm:text-4xl">Data Whip: Single Source of Truth in 90 Days</h2>
+                    <p class="mt-4 text-lg text-slate-300 leading-relaxed">
+                        We don't replace your systems. We build a unified truth layer above them. We get every stakeholder in one room, define your metrics *once*, and turn those definitions into code.
+                    </p>
+                </div>
+
+                <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                    <div class="bg-slate-800 p-8 rounded-xl border border-slate-700">
+                        <p class="text-7xl font-bold text-cyan-400">90</p>
+                        <p class="mt-2 text-xl font-semibold text-slate-100">Days to Delivery</p>
+                    </div>
+                    <div class="bg-slate-800 p-8 rounded-xl border border-slate-700">
+                        <p class="text-7xl font-bold text-cyan-400">$90K</p>
+                        <p class="mt-2 text-xl font-semibold text-slate-100">Fixed-Price</p>
+                    </div>
+                    <div class="bg-cyan-900/50 p-8 rounded-xl border-2 border-cyan-500 shadow-lg">
+                        <p class="text-7xl font-bold text-cyan-400">Day 60</p>
+                        <p class="mt-2 text-xl font-semibold text-cyan-300">Proof Before Final Payment</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: The 90-Day Journey (NEW 4-Step Process) -->
+        <section id="process" class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto">
+                    <h2 class="text-3xl font-extrabold text-white sm:text-4xl">The 90-Day Journey to Truth</h2>
+                    <p class="mt-4 text-lg text-slate-300 leading-relaxed">
+                        Our sprint is a transparent, four-phase process designed to build trust and deliver value fast.
+                    </p>
+                </div>
+
+                <!-- Interactive 90-Day Model -->
+                <div class="mt-16 max-w-6xl mx-auto">
+                    
+                    <!-- Phase Buttons (NOW 4 TABS) -->
+                    <div class="flex flex-col md:flex-row rounded-t-lg overflow-hidden">
+                        <button id="phase-btn-1" class="phase-btn active w-full md:w-1/4 p-6 text-left bg-slate-700 text-slate-300" onclick="selectPhase(1)">
+                            <span class="block text-sm font-semibold text-cyan-400">Days 1-10</span>
+                            <span class="block text-xl font-bold text-white mt-1">1. Quantify Pain</span>
+                        </button>
+                        <button id="phase-btn-2" class="phase-btn w-full md:w-1/4 p-6 text-left bg-slate-900 text-slate-400" onclick="selectPhase(2)">
+                            <span class="block text-sm font-semibold text-cyan-400">Days 11-30</span>
+                            <span class="block text-xl font-bold text-white mt-1">2. Connect Systems</span>
+                        </button>
+                        <button id="phase-btn-3" class="phase-btn w-full md:w-1/4 p-6 text-left bg-slate-900 text-slate-400" onclick="selectPhase(3)">
+                            <span class="block text-sm font-semibold text-cyan-400">Days 31-60</span>
+                            <span class="block text-xl font-bold text-white mt-1">3. Build & Deliver</span>
+                        </button>
+                        <button id="phase-btn-4" class="phase-btn w-full md:w-1/4 p-6 text-left bg-slate-900 text-slate-400" onclick="selectPhase(4)">
+                            <span class="block text-sm font-semibold text-cyan-400">Days 61-90</span>
+                            <span class="block text-xl font-bold text-white mt-1">4. Train & Hand Off</span>
+                        </button>
+                    </div>
+
+                    <!-- Phase Content -->
+                    <div class="bg-slate-800 p-8 rounded-b-lg shadow-2xl">
+                        <div class="grid md:grid-cols-2 gap-8 items-start">
+                            <!-- Column 1: Text Description -->
+                            <div>
+                                <h3 id="phase-title" class="text-2xl font-bold text-white mb-2"></h3>
+                                <p id="phase-desc" class="text-slate-300 leading-relaxed"></p>
+                                <div class="bg-slate-700 p-6 rounded-lg border border-slate-600 mt-6">
+                                    <h4 class="text-base font-semibold text-slate-100 mb-3">Key Technologies</h4>
+                                    <div id="phase-tech" class="flex flex-wrap gap-2"></div>
+                                    <hr class="my-4 border-slate-600">
+                                    <h4 class="text-base font-semibold text-slate-100 mb-2">Critical Deliverable</h4>
+                                    <p id="phase-deliverable" class="text-cyan-400 font-bold"></p>
+                                    <h4 class="text-base font-semibold text-slate-100 mb-2 mt-4">Payment Milestone</h4>
+                                    <p id="phase-payment" class="text-slate-300 font-medium"></p>
+                                </div>
+                            </div>
+                            <!-- Column 2: Visual Mockup -->
+                            <div>
+                                <h3 class="text-xl font-bold text-white mb-2">Phase Deliverable Mockup</h3>
+                                <div id="phase-visual" class="bg-slate-900 p-4 rounded-lg border border-slate-700 min-h-[300px]">
+                                    <!-- Visual content injected by JS -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: Before vs After -->
+        <section id="proof" class="py-20 bg-slate-800/50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto">
+                    <h2 class="text-3xl font-extrabold text-white sm:text-4xl">The Difference Isn't Speed. It's Confidence.</h2>
+                </div>
+                <div class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-red-900/30 p-8 rounded-lg border border-red-500">
+                        <h3 class="text-3xl font-bold text-red-300 mb-6">Before Data Whip</h3>
+                        <p class="text-lg text-slate-300 font-medium italic">"What's our churn rate?"</p>
+                        <ul class="mt-4 space-y-3 text-slate-300 list-disc list-inside">
+                            <li>Four teams pull four different numbers.</li>
+                            <li>Meeting scheduled to reconcile.</li>
+                            <li>Decision is delayed by a week.</li>
+                            <li>Action happens weeks later, if at all.</li>
+                        </ul>
+                    </div>
+                    <div class="bg-cyan-900/30 p-8 rounded-lg border border-cyan-500">
+                        <h3 class="text-3xl font-bold text-cyan-300 mb-6">After Data Whip</h3>
+                        <p class="text-lg text-slate-300 font-medium italic">"What's our churn rate?"</p>
+                        <ul class="mt-4 space-y-3 text-slate-300 list-disc list-inside">
+                            <li>One answer: "14.2%, up from 12.1%."</li>
+                            <li>Analyst drills down into "Why?" in real-time.</li>
+                            <li>Decision is made in the meeting.</li>
+                            <li>Action is taken by end of day.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 7: ROI -->
+        <section id="roi" class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto">
+                    <h2 class="text-3xl font-extrabold text-white sm:text-4xl">What Happens After Day 90: The ROI</h2>
+                </div>
+
+                <div class="mt-16 max-w-4xl mx-auto bg-slate-800 p-8 rounded-xl border border-cyan-500 shadow-2xl">
+                    <h3 class="text-2xl font-bold text-white text-center">The Payback Math: 2.4 Months</h3>
+                    <p class="text-center text-slate-300 mt-2 mb-8">You paid $90,000. You save $38,000/month in efficiency and $200,000/quarter in better decisions.</p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center p-4 bg-slate-700 rounded-lg">
+                            <span class="text-lg text-slate-300">One-Time Sprint Cost:</span>
+                            <span class="text-2xl font-bold text-red-400">-$90,000</span>
+                        </div>
+                        <div class="flex justify-between items-center p-4 bg-slate-700 rounded-lg">
+                            <span class="text-lg text-slate-300">Monthly Efficiency Gain (Labor):</span>
+                            <span class="text-2xl font-bold text-green-400">+$38,000</span>
+                        </div>
+                        <div class="flex justify-between items-center p-4 bg-slate-900 rounded-lg">
+                            <span class="text-lg font-semibold text-white">Monthly ROI (Efficiency Only):</span>
+                            <span class="text-2xl font-bold text-cyan-400">2.4 Months</span>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 pt-6 border-t border-slate-600 text-center">
+                        <p class="text-2xl font-bold text-white">Month 4: Data team stops being "numbers police," starts building predictive models.</p>
+                        <p class="text-lg text-slate-300 mt-2">Month 6: CEO presents to board with zero anxiety about numbers holding up.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 8: The Real Problem -->
+        <section id="trust" class="py-20 bg-slate-800/50">
+            <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-3xl font-extrabold text-white sm:text-4xl">The Real Problem We Solve: <span class="text-red-400">Trust Bankruptcy</span></h2>
+                <p class="mt-6 text-xl text-slate-300 leading-relaxed">
+                    Most companies have **trust bankruptcy** in their data org. Years of missed deadlines and conflicting reports killed credibility. Your team spends more time *debating* numbers than *making decisions* with them.
+                </p>
+                <p class="mt-6 text-2xl text-cyan-400 font-semibold leading-relaxed">
+                    Data Whip breaks the cycle by delivering something undeniably real in 60 days.
+                </p>
+                <p class="mt-4 text-xl text-slate-300 leading-relaxed">
+                    Working dashboards. Everyone's data. One place. Definitions everyone agreed to. That single act of delivery rebuilds trust. And once trust is rebuilt, everything unlocks.
+                </p>
+            </div>
+        </section>
+
+        <!-- NEW Section 9: The Scale & Ambition -->
+        <section id="scale" class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto">
+                    <h2 class="text-3xl font-extrabold text-white sm:text-4xl">The Scale: Product, Market, & Ambition</h2>
+                    <p class="mt-4 text-lg text-slate-300 leading-relaxed">
+                        The 90-Day Sprint is our beachhead. The **Real-Time Accelerator** is our path to global scale, backed by a massive market and a clear 3-year plan.
+                    </p>
+                </div>
+                
+                <!-- Product Model -->
+                <div class="mt-16 max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
+                    <div class="bg-slate-800 p-8 rounded-xl shadow-lg border border-slate-700">
+                        <span class="inline-flex items-center justify-center px-3 py-1 text-sm font-medium leading-5 rounded-full text-blue-300 bg-blue-900/50">Service Model</span>
+                        <h3 class="text-2xl font-bold text-white mt-4 mb-2">1. The Sprint (Foundation)</h3>
+                        <p class="text-sm text-slate-300 mb-4">The $90k fixed-price project to build the "Single Source of Truth." This is the pre-requisite for all future value.</p>
+                    </div>
+                    <div class="bg-slate-800 p-8 rounded-xl shadow-lg border-2 border-cyan-500">
+                        <span class="inline-flex items-center justify-center px-3 py-1 text-sm font-medium leading-5 rounded-full text-cyan-300 bg-cyan-900/50">Product Model (Scale)</span>
+                        <h3 class="text-2xl font-bold text-white mt-4 mb-2">2. The Real-Time Accelerator</h3>
+                        <p class="text-sm text-slate-300 mb-4">An annual license ($50k-$250k+) that adds sub-second replication, stream processing, and event-driven automation on top of your new foundation.</p>
+                    </div>
+                </div>
+
+                <!-- TAM/SAM/SOM Market Sizing -->
+                <div class="mt-16 max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                    <div class="bg-slate-800 p-6 rounded-xl border border-slate-700">
+                        <h4 class="text-sm font-semibold text-slate-400 uppercase">TAM (Total Market)</h4>
+                        <p class="text-4xl font-bold text-white mt-2">$15T</p>
+                        <p class="mt-2 text-sm text-slate-300">Global cost of bad, stale data (MIT Sloan).</p>
+                    </div>
+                    <div class="bg-slate-800 p-6 rounded-xl border border-slate-700">
+                        <h4 class="text-sm font-semibold text-slate-400 uppercase">SAM (Serviceable Market)</h4>
+                        <p class="text-4xl font-bold text-white mt-2">$300B</p>
+                        <p class="mt-2 text-sm text-slate-300">Global Big Data & Real-Time Analytics Market (Gartner).</p>
+                    </div>
+                    <div class="bg-slate-800 p-6 rounded-xl border border-cyan-500 shadow-lg">
+                        <h4 class="text-sm font-semibold text-cyan-400 uppercase">SOM (Our 3-Yr. Goal)</h4>
+                        <p class="text-4xl font-bold text-cyan-400 mt-2">$49.5M</p>
+                        <p class="mt-2 text-sm text-cyan-300">A &lt;0.02% capture of the SAM.</p>
+                    </div>
+                </div>
+
+                <!-- 3-Year Ambition -->
+                <div class="mt-16 max-w-4xl mx-auto bg-slate-800 p-8 rounded-xl border border-slate-700">
+                    <h3 class="text-2xl font-bold text-white text-center">Our 3-Year Ambition</h3>
+                    <p class="text-center text-slate-300 mt-2 mb-6">We achieve scale by converting Sprints (Service) into Accelerator Licenses (Product).</p>
+                    
+                    <div class="flex flex-col md:flex-row justify-between items-center space-y-8 md:space-y-0 md:space-x-4">
+                        
+                        <!-- Year 1 -->
+                        <div class="text-center">
+                            <p class="text-sm font-semibold text-slate-400">Year 1</p>
+                            <p class="text-3xl font-bold text-cyan-400">$1.1M</p>
+                            <p class="text-xs text-slate-300 mt-1"><span class="font-bold">10 Sales</span> (Sprints @ $90k)</p>
+                            <p class="text-xs text-slate-300">2 Accelerator Licenses</p>
+                        </div>
+
+                        <svg class="w-12 h-12 text-cyan-500 md:w-20 md:h-20 transform rotate-90 md:rotate-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                        
+                        <!-- Year 2 -->
+                        <div class="text-center">
+                            <p class="text-sm font-semibold text-slate-400">Year 2</p>
+                            <p class="text-3xl font-bold text-cyan-400">$6.25M</p>
+                            <p class="text-xs text-slate-300 mt-1">25 Sprints</p>
+                            <p class="text-xs text-slate-300">20 Accelerator Licenses</p>
+                        </div>
+                        
+                        <svg class="w-12 h-12 text-cyan-500 md:w-20 md:h-20 transform rotate-90 md:rotate-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+
+                        <!-- Year 3 -->
+                        <div class="text-center">
+                            <p class="text-sm font-semibold text-slate-400">Year 3</p>
+                            <p class="text-3xl font-bold text-cyan-400">$49.5M</p>
+                            <p class="text-xs text-slate-300 mt-1">50 Sprints</p>
+                            <p class="text-xs text-slate-300">90 Accelerator Licenses</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- NEW Section 10: GTM Strategy -->
+        <section id="gtm" class="py-20 bg-slate-800/50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto">
+                    <h2 class="text-3xl font-extrabold text-white sm:text-4xl">Strategy: GTM & Objection Handling</h2>
+                    <p class="mt-4 text-lg text-slate-300 leading-relaxed">
+                        Our Go-to-Market is surgical, targeting the dual buyers with a clear ROI. Our model is designed to proactively destroy all common sales objections.
+                    </p>
+                </div>
+
+                <div class="mt-16 grid lg:grid-cols-2 gap-10">
+                    
+                    <!-- GTM Year 1 -->
+                    <div>
+                        <h3 class="text-2xl font-bold text-white mb-6">How We Get the First 10 Sales (Year 1 GTM)</h3>
+                        <div class="space-y-4">
+                            <div class="bg-slate-700 p-6 rounded-lg">
+                                <h4 class="text-lg font-semibold text-cyan-400 mb-2">1. Target Audience</h4>
+                                <p class="text-slate-300">100 mid-market companies ($50M-$500M) in 3 key verticals: FinTech, E-commerce, and Manufacturing.</p>
+                            </div>
+                            <div class="bg-slate-700 p-6 rounded-lg">
+                                <h4 class="text-lg font-semibold text-cyan-400 mb-2">2. Outreach & Messaging</h4>
+                                <p class="text-slate-300">Founder-led outreach. We send the **ROI Model** to the CFO and the **90-Day Tech Walk-through** to the CTO. We get both on the first call.</p>
+                            </div>
+                            <div class="bg-slate-700 p-6 rounded-lg">
+                                <h4 class="text-lg font-semibold text-cyan-400 mb-2">3. Conversion Funnel</h4>
+                                <p class="text-slate-300">Our market research confirms the pain is acute. A **10%** lead-to-close rate is a conservative target to achieve 10 sales from 100 qualified leads.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Objection Handling -->
+                    <div>
+                        <h3 class="text-2xl font-bold text-white mb-6">Why Your Last Initiative Failed</h3>
+                        <div class="space-y-4" id="barrier-accordion">
+                            
+                            <!-- Accordion Item 1 -->
+                            <div>
+                                <button class="barrier-btn flex justify-between items-center w-full p-5 bg-slate-700 rounded-lg text-left" aria-expanded="true" data-target="solution-1">
+                                    <span class="text-base font-semibold text-slate-100">Objection: "It was always stale."</span>
+                                    <svg class="barrier-icon w-5 h-5 text-cyan-400 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path></svg>
+                                </button>
+                                <div id="solution-1" class="overflow-hidden transition-all duration-300">
+                                    <p class="p-5 bg-slate-800 rounded-b-lg text-slate-300"><strong>Data Whip Solution:</strong> We build with real-time "Change Data Capture" (CDC) from day one. Your data is live, sub-second, not "refreshed nightly."</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Accordion Item 2 -->
+                            <div>
+                                <button class="barrier-btn flex justify-between items-center w-full p-5 bg-slate-700 rounded-lg text-left" aria-expanded="false" data-target="solution-2">
+                                    <span class="text-base font-semibold text-slate-100">Objection: "Definitions didn't match the business."</span>
+                                    <svg class="barrier-icon w-5 h-5 text-cyan-400 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path></svg>
+                                </button>
+                                <div id="solution-2" class="hidden overflow-hidden transition-all duration-300">
+                                    <p class="p-5 bg-slate-800 rounded-b-lg text-slate-300"><strong>Data Whip Solution:</strong> We are business-first. Our Day 10 meeting *forces* the definition of "revenue." That definition becomes code. We build the platform *after* we understand the business questions.</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Accordion Item 3 -->
+                            <div>
+                                <button class="barrier-btn flex justify-between items-center w-full p-5 bg-slate-700 rounded-lg text-left" aria-expanded="false" data-target="solution-3">
+                                    <span class="text-base font-semibold text-slate-100">Objection: "It was a guaranteed-failure model."</span>
+                                    <svg class="barrier-icon w-5 h-5 text-cyan-400 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path></svg>
+                                </button>
+                                <div id="solution-3" class="hidden overflow-hidden transition-all duration-300">
+                                    <p class="p-5 bg-slate-800 rounded-b-lg text-slate-300"><strong>Data Whip Solution:</strong> We use a fixed-scope, fixed-time, guaranteed model. We deliver working dashboards by Day 60, before final payment. We can't "miss deadlines" or "add a Phase 2." We either deliver, or you don't pay.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 11: CTA -->
+        <section id="cta" class="py-20 bg-cyan-600 text-white">
+            <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-4xl font-extrabold sm:text-5xl">Your Next Step: The 2-Hour Audit</h2>
+                <p class="mt-6 text-xl text-cyan-100 leading-relaxed">
+                    We offer a free, 2-hour audit where we map your current data state, quantify your "Hidden Cost," and show you exactly what 90 days would deliver. If the ROI isn't there, we'll be the first to tell you.
+                </p>
+                <div class="mt-12">
+                    <a href="mailto:team@datawhip.io" class="inline-block bg-slate-900 text-white px-10 py-4 rounded-md text-xl font-bold hover:bg-slate-800 transition-colors duration-200">
+                        Book Your Free Audit
+                    </a>
+                    <p class="mt-4 text-sm text-cyan-200">team@datawhip.io</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    
+    <footer class="bg-slate-900 border-t border-slate-700 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-lg font-bold text-white">Data<span class="text-cyan-400">Whip</span></p>
+            <p class="mt-2 text-sm text-slate-400">From conflict to confidence. 90 days. Guaranteed.</p>
+            <p class="mt-4 text-xs text-slate-500">&copy; 2025 Data Whip. All rights reserved. This is a conceptual business plan.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // --- Mobile Menu ---
+            const menuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            menuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            mobileMenu.addEventListener('click', (e) => {
+                if (e.target.tagName === 'A') {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+
+            // --- 90-Day Sprint Interactive Model (NEW 4-TAB VERSION) ---
+            const techTag = (label) => `<span class="inline-flex items-center justify-center px-2 py-0.5 text-xs font-medium leading-4 rounded-full text-cyan-300 bg-cyan-900/50">${label}</span>`;
+            
+            const sprintData = {
+                1: {
+                    title: "Phase 1: Quantify the Pain",
+                    desc: "We interview your key stakeholders (CFO, Sales, Ops) to understand their data conflicts. We calculate the *real* dollar cost of this 'Hidden Cost' to establish a clear business case and ROI.",
+                    deliverable: "The '$847K' Hidden Cost Report",
+                    action: "Stakeholder Interviews & ROI Workshop",
+                    visualMockup: `
+                        <div class="bg-white rounded-lg shadow-lg p-4 font-sans text-slate-800">
+                            <h4 class="font-bold text-slate-900">Hidden Cost Audit ($75M Co. Sample)</h4>
+                            <p class="text-sm text-slate-600 mb-4">Quantifying decision latency and duplicate work...</p>
+                            <div class="space-y-3">
+                                <div class="flex justify-between p-3 bg-slate-50 rounded-md">
+                                    <span class="font-medium text-sm">Decision Latency (Ops):</span>
+                                    <span class="text-sm font-bold text-red-600">-$450k / yr</span>
+                                </div>
+                                <div class="flex justify-between p-3 bg-slate-50 rounded-md">
+                                    <span class="font-medium text-sm">Data Reconciliation (Labor):</span>
+                                    <span class="text-sm font-bold text-red-600">-$250k / yr</span>
+                                </div>
+                                <div class="flex justify-between p-3 bg-slate-50 rounded-md">
+                                    <span class="font-medium text-sm">Missed Revenue (Sales):</span>
+                                    <span class="text-sm font-bold text-red-600">-$147k / yr</span>
+                                </div>
+                                <div class="flex justify-between p-3 bg-slate-100 rounded-md mt-2 border-t-2 border-red-500">
+                                    <span class="font-bold text-sm text-slate-900">Total Hidden Cost:</span>
+                                    <span class="text-sm font-bold text-red-700">-$847k / yr</span>
+                                </div>
+                            </div>
+                        </div>
+                    `
+                },
+                2: {
+                    title: "Phase 2: Connect Everything",
+                    desc: "Our team deploys real-time 'Change Data Capture' (CDC) connectors. We don't use slow 'nightly extracts.' Data flows from your systems (Salesforce, QuickBooks) the *second* it's created.",
+                    deliverable: "Live-Streaming Data Pipeline",
+                    action: "Deploy Real-Time CDC (Striim/Fivetran)",
+                    visualMockup: `
+                        <div class="bg-white rounded-lg shadow-lg p-4 font-sans text-slate-800">
+                            <h4 class="font-bold text-slate-900">Data Source Connections</h4>
+                            <p class="text-sm text-slate-600 mb-4">Real-time streams activated...</p>
+                            <div class="space-y-3">
+                                <div class="flex items-center justify-between p-3 bg-slate-50 rounded-md">
+                                    <span class="font-medium text-sm">🗄️ QuickBooks (Finance)</span>
+                                    <span class="text-sm font-bold text-green-600">Streaming (Live)</span>
+                                </div>
+                                <div class="flex items-center justify-between p-3 bg-slate-50 rounded-md">
+                                    <span class="font-medium text-sm">☁️ Salesforce (CRM)</span>
+                                    <span class="text-sm font-bold text-green-600">Streaming (Live)</span>
+                                </div>
+                                <div class="flex items-center justify-between p-3 bg-slate-50 rounded-md">
+                                    <span class="font-medium text-sm">🛒 Shopify (E-comm)</span>
+                                    <span class="text-sm font-bold text-green-600">Streaming (Live)</span>
+                                </div>
+                            </div>
+                        </div>
+                    `
+                },
+                3: {
+                    title: "Phase 3: Build & Deliver (The Guarantee)",
+                    desc: "This is the magic. We run the 'Definition Workshop' to get all leaders to agree on 'What is Revenue?'. We code that logic in dbt. By Day 60, we show you the working, unified dashboards. **This is our proof-before-payment guarantee.**",
+                    deliverable: "Working Executive & C360 Dashboards",
+                    action: "Metric Definition Workshop & dbt Modeling",
+                    visualMockup: `
+                        <div class="bg-white rounded-lg shadow-lg p-4 font-sans text-slate-800">
+                            <h4 class="font-bold text-slate-900 mb-4">Unified Executive Dashboard (Day 60)</h4>
+                            <div class="grid grid-cols-2 gap-3">
+                                <div class="bg-slate-50 p-3 rounded-md">
+                                    <p class="text-xs text-slate-500 uppercase">Total Revenue (Defined)</p>
+                                    <p class="text-2xl font-bold text-slate-800">$8.2M</p>
+                                </div>
+                                <div class="bg-slate-50 p-3 rounded-md">
+                                    <p class="text-xs text-slate-500 uppercase">Customer Churn (Defined)</p>
+                                    <p class="text-2xl font-bold text-slate-800">14.2%</p>
+                                </div>
+                                <div class="col-span-2 bg-slate-50 p-3 rounded-md">
+                                    <p class="text-xs font-bold text-slate-600 mb-2">Revenue by Segment</p>
+                                    <div class="flex items-end h-24 space-x-2">
+                                        <div class="w-1/4 bg-cyan-500 rounded-t-sm" style="height: 40%"></div>
+                                        <div class="w-1/4 bg-cyan-500 rounded-t-sm" style="height: 60%"></div>
+                                        <div class="w-1/4 bg-cyan-500 rounded-t-sm" style="height: 50%"></div>
+                                        <div class="w-1/4 bg-cyan-500 rounded-t-sm" style="height: 80%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `
+                },
+                4: {
+                    title: "Phase 4: Train & Hand Off",
+                    desc: "The platform is working and verified by your team. We now spend the final 30 days training your people, fully documenting the entire stack, establishing governance, and handing you the keys. The platform is 100% yours.",
+                    deliverable: "Trained Team & Full Documentation",
+                    action: "Governance Handoff & Team Training",
+                    visualMockup: `
+                        <div class="bg-slate-200 rounded-lg shadow-lg p-4 font-sans text-slate-800 flex overflow-hidden h-[300px]">
+                            <div class="w-1/3 bg-slate-100 p-2 rounded-l-md overflow-y-auto">
+                                <h5 class="text-xs font-bold text-slate-500 uppercase">Wiki / Docs</h5>
+                                <ul class="text-sm mt-1 space-y-0.5">
+                                    <li class="pl-2 font-bold text-cyan-700">1. Metric Definitions</li>
+                                    <li class="pl-2 text-slate-700">2. Data Lineage</li>
+                                    <li class="pl-2 text-slate-700">3. dbt Model Guide</li>
+                                    <li class="pl-2 text-slate-700">4. Governance Plan</li>
+                                </ul>
+                            </div>
+                            <div class="w-2/3 bg-white p-3 rounded-r-md text-xs">
+                                <h5 class="font-bold text-slate-800">1. Metric Definitions</h5>
+                                <p class="mt-2 text-slate-600"><span class="font-semibold text-slate-900">Revenue [v1.0]</span></p>
+                                <p class="mt-1 text-slate-600">As defined on 10/28/25 by CEO, Finance, Sales.</p>
+                                <p class="mt-1 text-slate-600 italic">"Payment is cleared and posted to the general ledger (Source: QuickBooks)."</p>
+                            </div>
+                        </div>
+                    `
+                }
+            };
+
+            const phaseTitleEl = document.getElementById('phase-title');
+            const phaseDescEl = document.getElementById('phase-desc');
+            const phaseActionEl = document.getElementById('phase-action');
+            const phaseDeliverableEl = document.getElementById('phase-deliverable');
+            const phasePaymentEl = document.getElementById('phase-payment');
+            const phaseVisualEl = document.getElementById('phase-visual');
+            const phaseBtns = [document.getElementById('phase-btn-1'), document.getElementById('phase-btn-2'), document.getElementById('phase-btn-3'), document.getElementById('phase-btn-4')];
+
+            window.selectPhase = (phaseNum) => {
+                const data = sprintData[phaseNum];
+                
+                phaseTitleEl.textContent = data.title;
+                phaseDescEl.textContent = data.desc;
+                phaseActionEl.textContent = data.action;
+                phaseDeliverableEl.textContent = data.deliverable;
+                phasePaymentEl.textContent = data.payment;
+                phaseVisualEl.innerHTML = data.visualMockup;
+
+                phaseBtns.forEach((btn, index) => {
+                    if ((index + 1) === phaseNum) {
+                        btn.classList.add('active');
+                        btn.classList.remove('bg-slate-900', 'text-slate-400');
+                    } else {
+                        btn.classList.remove('active');
+                        btn.classList.add('bg-slate-900', 'text-slate-400');
+                    }
+                });
+            };
+
+            // Ensure elements exist before calling selectPhase
+            if (phaseTitleEl && phaseDescEl && phaseActionEl && phaseDeliverableEl && phasePaymentEl && phaseVisualEl) {
+                selectPhase(1); // Initialize on load
+            }
+
+            // --- Barrier Mitigation Accordion ---
+            const barrierBtns = document.querySelectorAll('.barrier-btn');
+            barrierBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const targetId = btn.getAttribute('data-target');
+                    const targetPanel = document.getElementById(targetId);
+                    const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+
+                    // Close all others
+                    barrierBtns.forEach(otherBtn => {
+                        if (otherBtn !== btn) {
+                            otherBtn.setAttribute('aria-expanded', 'false');
+                            const otherPanel = document.getElementById(otherBtn.getAttribute('data-target'));
+                            if (otherPanel) otherPanel.classList.add('hidden');
+                        }
+                    });
+
+                    // Toggle current one
+                    btn.setAttribute('aria-expanded', !isExpanded);
+                    if (!isExpanded) {
+                        targetPanel.classList.remove('hidden');
+                    } else {
+                        targetPanel.classList.add('hidden');
+                    }
+                });
+            });
+
+            // --- Smooth Scroll for Nav Links ---
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if(targetElement) {
+                        const headerOffset = 64; // Height of sticky header
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                        
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: "smooth"
+                        });
+                    }
+                });
+            });
+
+        });
+    </script>
+</body>
+</html>
