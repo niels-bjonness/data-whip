@@ -4,7 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Whip: From Conflict to Confidence</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         body {
@@ -267,9 +280,6 @@
                                 <h3 id="phase-title" class="text-2xl font-bold text-white mb-2"></h3>
                                 <p id="phase-desc" class="text-slate-300 leading-relaxed"></p>
                                 <div class="bg-slate-700 p-6 rounded-lg border border-slate-600 mt-6">
-                                    <h4 class="text-base font-semibold text-slate-100 mb-3">Key Technologies</h4>
-                                    <div id="phase-tech" class="flex flex-wrap gap-2"></div>
-                                    <hr class="my-4 border-slate-600">
                                     <h4 class="text-base font-semibold text-slate-100 mb-2">Critical Deliverable</h4>
                                     <p id="phase-deliverable" class="text-cyan-400 font-bold"></p>
                                     <h4 class="text-base font-semibold text-slate-100 mb-2 mt-4">Payment Milestone</h4>
@@ -575,7 +585,7 @@
                     title: "Phase 1: Quantify the Pain",
                     desc: "We interview your key stakeholders (CFO, Sales, Ops) to understand their data conflicts. We calculate the *real* dollar cost of this 'Hidden Cost' to establish a clear business case and ROI.",
                     deliverable: "The '$847K' Hidden Cost Report",
-                    action: "Stakeholder Interviews & ROI Workshop",
+                    payment: "10% deposit ($9,000) to begin",
                     visualMockup: `
                         <div class="bg-white rounded-lg shadow-lg p-4 font-sans text-slate-800">
                             <h4 class="font-bold text-slate-900">Hidden Cost Audit ($75M Co. Sample)</h4>
@@ -605,7 +615,7 @@
                     title: "Phase 2: Connect Everything",
                     desc: "Our team deploys real-time 'Change Data Capture' (CDC) connectors. We don't use slow 'nightly extracts.' Data flows from your systems (Salesforce, QuickBooks) the *second* it's created.",
                     deliverable: "Live-Streaming Data Pipeline",
-                    action: "Deploy Real-Time CDC (Striim/Fivetran)",
+                    payment: "40% payment ($36,000) on pipeline activation",
                     visualMockup: `
                         <div class="bg-white rounded-lg shadow-lg p-4 font-sans text-slate-800">
                             <h4 class="font-bold text-slate-900">Data Source Connections</h4>
@@ -631,7 +641,7 @@
                     title: "Phase 3: Build & Deliver (The Guarantee)",
                     desc: "This is the magic. We run the 'Definition Workshop' to get all leaders to agree on 'What is Revenue?'. We code that logic in dbt. By Day 60, we show you the working, unified dashboards. **This is our proof-before-payment guarantee.**",
                     deliverable: "Working Executive & C360 Dashboards",
-                    action: "Metric Definition Workshop & dbt Modeling",
+                    payment: "40% payment ($36,000) on Day 60 verification",
                     visualMockup: `
                         <div class="bg-white rounded-lg shadow-lg p-4 font-sans text-slate-800">
                             <h4 class="font-bold text-slate-900 mb-4">Unified Executive Dashboard (Day 60)</h4>
@@ -661,7 +671,7 @@
                     title: "Phase 4: Train & Hand Off",
                     desc: "The platform is working and verified by your team. We now spend the final 30 days training your people, fully documenting the entire stack, establishing governance, and handing you the keys. The platform is 100% yours.",
                     deliverable: "Trained Team & Full Documentation",
-                    action: "Governance Handoff & Team Training",
+                    payment: "10% final payment ($9,000) on handoff",
                     visualMockup: `
                         <div class="bg-slate-200 rounded-lg shadow-lg p-4 font-sans text-slate-800 flex overflow-hidden h-[300px]">
                             <div class="w-1/3 bg-slate-100 p-2 rounded-l-md overflow-y-auto">
@@ -686,7 +696,6 @@
 
             const phaseTitleEl = document.getElementById('phase-title');
             const phaseDescEl = document.getElementById('phase-desc');
-            const phaseActionEl = document.getElementById('phase-action');
             const phaseDeliverableEl = document.getElementById('phase-deliverable');
             const phasePaymentEl = document.getElementById('phase-payment');
             const phaseVisualEl = document.getElementById('phase-visual');
@@ -695,28 +704,27 @@
             window.selectPhase = (phaseNum) => {
                 const data = sprintData[phaseNum];
                 
-                phaseTitleEl.textContent = data.title;
-                phaseDescEl.textContent = data.desc;
-                phaseActionEl.textContent = data.action;
-                phaseDeliverableEl.textContent = data.deliverable;
-                phasePaymentEl.textContent = data.payment;
-                phaseVisualEl.innerHTML = data.visualMockup;
+                if (data && phaseTitleEl && phaseDescEl && phaseDeliverableEl && phasePaymentEl && phaseVisualEl) {
+                    phaseTitleEl.textContent = data.title;
+                    phaseDescEl.textContent = data.desc;
+                    phaseDeliverableEl.textContent = data.deliverable;
+                    phasePaymentEl.textContent = data.payment;
+                    phaseVisualEl.innerHTML = data.visualMockup;
 
-                phaseBtns.forEach((btn, index) => {
-                    if ((index + 1) === phaseNum) {
-                        btn.classList.add('active');
-                        btn.classList.remove('bg-slate-900', 'text-slate-400');
-                    } else {
-                        btn.classList.remove('active');
-                        btn.classList.add('bg-slate-900', 'text-slate-400');
-                    }
-                });
+                    phaseBtns.forEach((btn, index) => {
+                        if (btn && (index + 1) === phaseNum) {
+                            btn.classList.add('active');
+                            btn.classList.remove('bg-slate-900', 'text-slate-400');
+                        } else if (btn) {
+                            btn.classList.remove('active');
+                            btn.classList.add('bg-slate-900', 'text-slate-400');
+                        }
+                    });
+                }
             };
 
-            // Ensure elements exist before calling selectPhase
-            if (phaseTitleEl && phaseDescEl && phaseActionEl && phaseDeliverableEl && phasePaymentEl && phaseVisualEl) {
-                selectPhase(1); // Initialize on load
-            }
+            // Initialize on load
+            selectPhase(1);
 
             // --- Barrier Mitigation Accordion ---
             const barrierBtns = document.querySelectorAll('.barrier-btn');
