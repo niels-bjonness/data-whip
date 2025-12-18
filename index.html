@@ -36,6 +36,21 @@
             background-color: #06B6D4;
         }
         
+        /* The 90-Day Sprint Refinery */
+        .phase-btn {
+            transition: all 0.3s ease;
+            border-bottom-width: 4px;
+            border-color: transparent;
+        }
+        .phase-btn.active {
+            border-color: #06B6D4; /* cyan-500 */
+            background-color: #1E2B3B !important; /* slate-800 */
+            color: #ffffff !important;
+        }
+        .phase-btn:hover:not(.active) {
+            background-color: #334155; /* slate-700 */
+        }
+
         /* Visual Elements */
         .diagram-box {
             background-color: #1E2B3B; /* slate-800 */
@@ -86,6 +101,7 @@
             <div class="hidden md:flex items-center space-x-6">
                 <a href="#problem" class="text-sm font-medium text-slate-300 hover:text-cyan-400">Problem</a>
                 <a href="#solution" class="text-sm font-medium text-slate-300 hover:text-cyan-400">Solution</a>
+                <a href="#process" class="text-sm font-medium text-slate-300 hover:text-cyan-400">Journey</a>
                 <a href="#framework" class="text-sm font-medium text-slate-300 hover:text-cyan-400">Data Matrix</a>
                 <a href="#market" class="text-sm font-medium text-slate-300 hover:text-cyan-400">Market</a>
                 <a href="#scale" class="text-sm font-medium text-slate-300 hover:text-cyan-400">Scale</a>
@@ -174,7 +190,7 @@
                         <div class="diagram-box">
                             <div class="diagram-icon bg-slate-700 text-white">🕸️</div>
                             <h4 class="font-bold text-white mb-2">The ERP Trap</h4>
-                            <p class="text-sm text-slate-400">JobBOSS, E2, Global Shop, and Monitor data is highly normalized and difficult to query without complex joins.</p>
+                            <p class="text-sm text-slate-400">JobBOSS, E2, Global Shop, and Monitor data is highly normalized and impossible to query for analytics without complex joins.</p>
                         </div>
                         <div class="diagram-box">
                             <div class="diagram-icon bg-slate-700 text-white">📉</div>
@@ -217,7 +233,7 @@
         </section>
 
         <!-- SECTION 3: THE SOLUTION (Dynamic) -->
-        <section id="solution" class="py-20">
+        <section id="solution" class="py-20 bg-slate-800/50">
             <div class="max-w-7xl mx-auto px-4">
                 
                 <!-- FINANCIAL SOLUTION -->
@@ -285,7 +301,67 @@
             </div>
         </section>
 
-        <!-- SECTION 4: THE FREQUENCY FRAMEWORK -->
+        <!-- SECTION 4: THE 90-DAY JOURNEY (Restored) -->
+        <section id="process" class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto">
+                    <h2 class="text-3xl font-extrabold text-white sm:text-4xl">The 90-Day Journey to Truth</h2>
+                    <p class="mt-4 text-lg text-slate-300 leading-relaxed">
+                        Our sprint is a transparent, four-phase process designed to build trust and deliver value fast.
+                    </p>
+                </div>
+
+                <!-- Interactive 90-Day Model -->
+                <div class="mt-16 max-w-6xl mx-auto">
+                    
+                    <!-- Phase Buttons (4 TABS) -->
+                    <div class="flex flex-col md:flex-row rounded-t-lg overflow-hidden">
+                        <button id="phase-btn-1" class="phase-btn active w-full md:w-1/4 p-6 text-left bg-slate-700 text-slate-300" onclick="selectPhase(1)">
+                            <span class="block text-sm font-semibold text-cyan-400">Days 1-10</span>
+                            <span class="block text-xl font-bold text-white mt-1">1. Quantify Pain</span>
+                        </button>
+                        <button id="phase-btn-2" class="phase-btn w-full md:w-1/4 p-6 text-left bg-slate-900 text-slate-400" onclick="selectPhase(2)">
+                            <span class="block text-sm font-semibold text-cyan-400">Days 11-30</span>
+                            <span class="block text-xl font-bold text-white mt-1">2. Connect Systems</span>
+                        </button>
+                        <button id="phase-btn-3" class="phase-btn w-full md:w-1/4 p-6 text-left bg-slate-900 text-slate-400" onclick="selectPhase(3)">
+                            <span class="block text-sm font-semibold text-cyan-400">Days 31-60</span>
+                            <span class="block text-xl font-bold text-white mt-1">3. Build & Deliver</span>
+                        </button>
+                        <button id="phase-btn-4" class="phase-btn w-full md:w-1/4 p-6 text-left bg-slate-900 text-slate-400" onclick="selectPhase(4)">
+                            <span class="block text-sm font-semibold text-cyan-400">Days 61-90</span>
+                            <span class="block text-xl font-bold text-white mt-1">4. Train & Hand Off</span>
+                        </button>
+                    </div>
+
+                    <!-- Phase Content -->
+                    <div class="bg-slate-800 p-8 rounded-b-lg shadow-2xl">
+                        <div class="grid md:grid-cols-2 gap-8 items-start">
+                            <!-- Column 1: Text Description -->
+                            <div>
+                                <h3 id="phase-title" class="text-2xl font-bold text-white mb-2"></h3>
+                                <p id="phase-desc" class="text-slate-300 leading-relaxed"></p>
+                                <div class="bg-slate-700 p-6 rounded-lg border border-slate-600 mt-6">
+                                    <h4 class="text-base font-semibold text-slate-100 mb-2">Critical Deliverable</h4>
+                                    <p id="phase-deliverable" class="text-cyan-400 font-bold"></p>
+                                    <h4 class="text-base font-semibold text-slate-100 mb-2 mt-4">Payment Milestone</h4>
+                                    <p id="phase-payment" class="text-slate-300 font-medium"></p>
+                                </div>
+                            </div>
+                            <!-- Column 2: Visual Mockup -->
+                            <div>
+                                <h3 class="text-xl font-bold text-white mb-2">Phase Deliverable Mockup</h3>
+                                <div id="phase-visual" class="bg-slate-900 p-4 rounded-lg border border-slate-700 min-h-[300px]">
+                                    <!-- Visual content injected by JS -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: THE FREQUENCY FRAMEWORK -->
         <section id="framework" class="py-20 bg-slate-800/50">
             <div class="max-w-6xl mx-auto px-4">
                 <div class="text-center mb-12">
@@ -354,14 +430,10 @@
                         <p class="text-xs text-slate-500 mt-4">The "Board Deck" panic.</p>
                     </div>
                 </div>
-                
-                <div class="mt-8 text-center">
-                    <p class="text-slate-300 italic">We automate this entire spectrum. No more whiteboards. No more late Excel sheets.</p>
-                </div>
             </div>
         </section>
 
-        <!-- SECTION 5: MARKET SIZING -->
+        <!-- SECTION 6: MARKET SIZING -->
         <section id="market" class="py-20">
             <div class="max-w-7xl mx-auto px-4 text-center">
                  <h2 class="text-3xl font-bold text-white mb-12">The Market Opportunity</h2>
@@ -386,7 +458,7 @@
             </div>
         </section>
 
-        <!-- SECTION 6: SCALE & AMBITION -->
+        <!-- SECTION 7: SCALE & AMBITION -->
         <section id="scale" class="py-20 bg-slate-800/50">
             <div class="max-w-7xl mx-auto px-4 text-center">
                 <h2 class="text-3xl font-bold text-white mb-12">Ambition: From Project to Platform</h2>
@@ -435,7 +507,7 @@
             </div>
         </section>
 
-        <!-- SECTION 7: CTA -->
+        <!-- SECTION 8: CTA -->
         <section id="audit" class="py-20 bg-cyan-600 text-white text-center">
             <div class="max-w-3xl mx-auto px-4">
                 <h2 class="text-4xl font-extrabold mb-6">Your Next Step: The 2-Hour Audit</h2>
@@ -455,8 +527,8 @@
     </footer>
 
     <script>
+        // PERSONA TOGGLE LOGIC
         function setPersona(persona) {
-            // Update Buttons
             const btnFin = document.getElementById('btn-financial');
             const btnTech = document.getElementById('btn-technical');
             
@@ -468,7 +540,6 @@
                 btnFin.className = "px-6 py-2 rounded-full text-sm font-semibold transition-colors duration-200 text-slate-400 hover:text-white";
             }
 
-            // Update Content
             const financialElements = document.querySelectorAll('[data-view="financial"]');
             const technicalElements = document.querySelectorAll('[data-view="technical"]');
 
@@ -481,9 +552,152 @@
             });
         }
 
+        // 90-DAY JOURNEY LOGIC (RESTORED)
+        const techTag = (label) => `<span class="inline-flex items-center justify-center px-2 py-0.5 text-xs font-medium leading-4 rounded-full text-cyan-300 bg-cyan-900/50">${label}</span>`;
+        
+        const sprintData = {
+            1: {
+                title: "Phase 1: Quantify the Pain",
+                desc: "We interview your key stakeholders (CFO, Shop Manager, Supply Chain) to understand data conflicts. We calculate the dollar cost of 'hidden downtime' and scrap to establish a clear business case.",
+                deliverable: "The 'Cost of Chaos' Report",
+                payment: "$30,000 (Start)",
+                visualMockup: `
+                    <div class="bg-white rounded-lg shadow-lg p-4 font-sans text-slate-800">
+                        <h4 class="font-bold text-slate-900">Hidden Cost Audit (Sample Mfg)</h4>
+                        <p class="text-sm text-slate-600 mb-4">Quantifying lost production...</p>
+                        <div class="space-y-3">
+                            <div class="flex justify-between p-3 bg-slate-50 rounded-md">
+                                <span class="font-medium text-sm">Machine Downtime (Unplanned):</span>
+                                <span class="text-sm font-bold text-red-600">-$850k / yr</span>
+                            </div>
+                            <div class="flex justify-between p-3 bg-slate-50 rounded-md">
+                                <span class="font-medium text-sm">Excess Material Scrap:</span>
+                                <span class="text-sm font-bold text-red-600">-$320k / yr</span>
+                            </div>
+                            <div class="flex justify-between p-3 bg-slate-50 rounded-md">
+                                <span class="font-medium text-sm">Data Manual Entry (Labor):</span>
+                                <span class="text-sm font-bold text-red-600">-$150k / yr</span>
+                            </div>
+                            <div class="flex justify-between p-3 bg-slate-100 rounded-md mt-2 border-t-2 border-red-500">
+                                <span class="font-bold text-sm text-slate-900">Total Hidden Cost:</span>
+                                <span class="text-sm font-bold text-red-700">-$1.32M / yr</span>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            2: {
+                title: "Phase 2: Connect Everything",
+                desc: "Our team deploys automated 'Change Data Capture' (CDC) connectors. We connect directly to JobBOSS/E2 SQL backends or APIs. Data flows from your shop floor and ERP reliably and automatically.",
+                deliverable: "Automated Data Pipeline",
+                payment: "$30,000 (Day 45)",
+                visualMockup: `
+                    <div class="bg-white rounded-lg shadow-lg p-4 font-sans text-slate-800">
+                        <h4 class="font-bold text-slate-900">Data Source Connections</h4>
+                        <p class="text-sm text-slate-600 mb-4">Real-time streams activated...</p>
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between p-3 bg-slate-50 rounded-md">
+                                <span class="font-medium text-sm">🗄️ JobBOSS (SQL)</span>
+                                <span class="text-sm font-bold text-green-600">Active (Auto)</span>
+                            </div>
+                            <div class="flex items-center justify-between p-3 bg-slate-50 rounded-md">
+                                <span class="font-medium text-sm">☁️ Monitor ERP</span>
+                                <span class="text-sm font-bold text-green-600">Active (Auto)</span>
+                            </div>
+                            <div class="flex items-center justify-between p-3 bg-slate-50 rounded-md">
+                                <span class="font-medium text-sm">📊 Supply Chain XLS</span>
+                                <span class="text-sm font-bold text-green-600">Active (Auto)</span>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            3: {
+                title: "Phase 3: Build & Deliver",
+                desc: "This is the magic. We run the 'Definition Workshop' to get leaders to agree on 'What is Gross Margin?'. We code that logic. By Day 60, we show you the working, unified dashboards.",
+                deliverable: "Working Executive & Plant Dashboards",
+                payment: "$30,000 (Day 90)",
+                visualMockup: `
+                    <div class="bg-white rounded-lg shadow-lg p-4 font-sans text-slate-800">
+                        <h4 class="font-bold text-slate-900 mb-4">Plant Executive Dashboard (Day 60)</h4>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="bg-slate-50 p-3 rounded-md">
+                                <p class="text-xs text-slate-500 uppercase">OEE (Overall)</p>
+                                <p class="text-2xl font-bold text-slate-800">74.2%</p>
+                            </div>
+                            <div class="bg-slate-50 p-3 rounded-md">
+                                <p class="text-xs text-slate-500 uppercase">Scrap Rate</p>
+                                <p class="text-2xl font-bold text-red-600">3.1%</p>
+                            </div>
+                            <div class="col-span-2 bg-slate-50 p-3 rounded-md">
+                                <p class="text-xs font-bold text-slate-600 mb-2">Shift Performance</p>
+                                <div class="flex items-end h-24 space-x-2">
+                                    <div class="w-1/3 bg-cyan-500 rounded-t-sm" style="height: 60%"><span class="text-[9px] text-white block text-center">Shift 1</span></div>
+                                    <div class="w-1/3 bg-cyan-500 rounded-t-sm" style="height: 80%"><span class="text-[9px] text-white block text-center">Shift 2</span></div>
+                                    <div class="w-1/3 bg-cyan-500 rounded-t-sm" style="height: 40%"><span class="text-[9px] text-white block text-center">Shift 3</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            4: {
+                title: "Phase 4: Train & Hand Off",
+                desc: "The platform is working and verified. We spend the final 30 days training your people, documenting the data dictionary, and handing you the keys. The platform is 100% yours.",
+                deliverable: "Trained Team & Full Documentation",
+                payment: "Project Complete",
+                visualMockup: `
+                    <div class="bg-slate-200 rounded-lg shadow-lg p-4 font-sans text-slate-800 flex overflow-hidden h-[300px]">
+                        <div class="w-1/3 bg-slate-100 p-2 rounded-l-md overflow-y-auto">
+                            <h5 class="text-xs font-bold text-slate-500 uppercase">Docs</h5>
+                            <ul class="text-sm mt-1 space-y-0.5">
+                                <li class="pl-2 font-bold text-cyan-700">1. KPI Definitions</li>
+                                <li class="pl-2 text-slate-700">2. Lineage</li>
+                                <li class="pl-2 text-slate-700">3. dbt Guide</li>
+                            </ul>
+                        </div>
+                        <div class="w-2/3 bg-white p-3 rounded-r-md text-xs">
+                            <h5 class="font-bold text-slate-800">1. KPI Definitions</h5>
+                            <p class="mt-2 text-slate-600"><span class="font-semibold text-slate-900">Gross Margin [v1.0]</span></p>
+                            <p class="mt-1 text-slate-600">Defined: 10/28/25</p>
+                            <p class="mt-1 text-slate-600 italic">"Sales Price minus (Material + Direct Labor + Machine Burden). Source: JobBOSS."</p>
+                        </div>
+                    </div>
+                `
+            }
+        };
+
+        const phaseTitleEl = document.getElementById('phase-title');
+        const phaseDescEl = document.getElementById('phase-desc');
+        const phaseDeliverableEl = document.getElementById('phase-deliverable');
+        const phasePaymentEl = document.getElementById('phase-payment');
+        const phaseVisualEl = document.getElementById('phase-visual');
+        const phaseBtns = [document.getElementById('phase-btn-1'), document.getElementById('phase-btn-2'), document.getElementById('phase-btn-3'), document.getElementById('phase-btn-4')];
+
+        window.selectPhase = (phaseNum) => {
+            const data = sprintData[phaseNum];
+            
+            phaseTitleEl.textContent = data.title;
+            phaseDescEl.textContent = data.desc;
+            phaseDeliverableEl.textContent = data.deliverable;
+            phasePaymentEl.textContent = data.payment;
+            phaseVisualEl.innerHTML = data.visualMockup;
+
+            phaseBtns.forEach((btn, index) => {
+                if ((index + 1) === phaseNum) {
+                    btn.classList.add('active');
+                    btn.classList.remove('bg-slate-900', 'text-slate-400');
+                } else {
+                    btn.classList.remove('active');
+                    btn.classList.add('bg-slate-900', 'text-slate-400');
+                }
+            });
+        };
+
         // Initialize
         document.addEventListener('DOMContentLoaded', () => {
             setPersona('financial');
+            selectPhase(1); // Initialize Sprint section
         });
     </script>
 </body>
