@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Whip: CNC & Manufacturing Intelligence</title>
+    <title>Data Whip: Manufacturing Data Intelligence</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
@@ -34,6 +34,128 @@
         }
         .toggle-checkbox:checked + .toggle-label {
             background-color: #06B6D4;
+        }
+        
+        /* Visual Elements */
+        .diagram-box {
+            background-color: #1E2B3B; /* slate-800 */
+            border: 1px solid #334155; /* slate-700 */
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .diagram-icon {
+            width: 3.5rem;
+            height: 3.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        /* Frequency Matrix */
+        .freq-cell {
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        .freq-cell:hover {
+            transform: scale(1.02);
+            background-color: #334155;
+        }
+        .freq-cell.active {
+            border-color: #06B6D4;
+            background-color: #1E293B;
+        }
+
+        /* The 90-Day Sprint Refinery */
+        .phase-btn {
+            transition: all 0.3s ease;
+            border-bottom-width: 4px;
+            border-color: transparent;
+        }
+        .phase-btn.active {
+            border-color: #06B6D4; /* cyan-500 */
+            background-color: #1E2B3B !important; /* slate-800 */
+            color: #ffffff !important;
+        }
+        .phase-btn:hover:not(.active) {
+            background-color: #334155; /* slate-700 */
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-300 antialiased">
+
+    <!-- Header / Navigation -->
+    <header class="sticky top-0 z-50 w-full bg-slate-900/90 backdrop-blur-lg border-b border-slate-700 shadow-lg">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex justify-between items-center">
+            <div class="flex items-center">
+                <span class="text-2xl font-bold text-slate-100 mr-8">Data<span class="text-cyan-400">Whip</span></span>
+            </div>
+
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="#problem" class="text-sm font-medium text-slate-300 hover:text-cyan-400">Problem</a>
+                <a href="#solution" class="text-sm font-medium text-slate-300 hover:text-cyan-400">Solution</a>
+                <a href="#framework" class="text-sm font-medium text-slate-300 hover:text-cyan-400">Data Matrix</a>
+                <a href="#market" class="text-sm font-medium text-slate-300 hover:text-cyan-400">Market</a>
+                <a href="#scale" class="text-sm font-medium text-slate-300 hover:text-cyan-400">Scale</a>
+                <a href="#audit" class="bg-cyan-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-cyan-500 transition-colors duration-200">
+                    Get Audit
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- SECTION 1: HERO (Static + Toggle) -->
+        <section id="overview" class="pt-20 pb-20 md:pt-32 md:pb-24 relative overflow-hidden">
+            <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+                
+                <!-- Static Main Headlines -->
+                <h1 class="text-4xl font-extrabold text-white sm:text-6xl leading-tight mb-6">
+                    Whip Your Data <span class="text-cyan-400">Into Shape</span>.
+                </h1>
+                <p class="text-xl text-slate-300 mb-10 max-w-2xl mx-auto font-medium">
+                    The Unified Data Foundation for CNC & Precision Manufacturing.
+                </p>
+
+                <!-- Pricing Boxes -->
+                <div class="flex justify-center gap-4 mb-10">
+                    <div class="bg-slate-800 border border-slate-700 px-6 py-3 rounded-xl">
+                        <p class="text-2xl font-bold text-cyan-400">$90,000</p>
+                        <p class="text-xs text-slate-400">Fixed Price Project</p>
+                    </div>
+                    <div class="bg-slate-800 border border-slate-700 px-6 py-3 rounded-xl">
+                        <p class="text-2xl font-bold text-cyan-400">90 Days</p>
+                        <p class="text-xs text-slate-400">Guaranteed Delivery</p>
+                    </div>
+                </div>
+
+                <!-- PERSONA TOGGLE (Moved Here) -->
+                <div class="flex items-center justify-center mb-8">
+                    <div class="flex items-center bg-slate-800 rounded-full p-1 border border-slate-600">
+                        <button id="btn-financial" class="px-6 py-2 rounded-full text-sm font-semibold transition-colors duration-200 bg-cyan-600 text-white" onclick="setPersona('financial')">Financial View</button>
+                        <button id="btn-technical" class="px-6 py-2 rounded-full text-sm font-semibold transition-colors duration-200 text-slate-400 hover:text-white" onclick="setPersona('technical')">Technical View</button>
+                    </div>
+                </div>
+
+                <!-- Dynamic Intro Hook -->
+                <div data-view="financial" class="max-w-2xl mx-auto">
+                    <p class="text-lg text-slate-400 leading-relaxed italic">
+                        "Stop debating numbers in your Monday production meeting. We deliver a unified, accurate view of your CNC Operations across all plants in 90 days."
+                    </p>
+                </div>
+
+                <div data-view="technical" class="hidden max-w-2xl mx-auto">
+                    <p class="text-lg text-slate-400 leading-relaxed italic">
+                        "You don't need another dashboard tool. You need a data engineering partner to model the mess between JobBOSS, Monitor, MS Dynamics, and your machines. We build the pipeline so you don't
+
+
         }
         
         /* The 90-Day Sprint Refinery */
